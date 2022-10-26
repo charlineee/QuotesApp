@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 public class DataUtil {
 
     public String loadFile(Context context){
-        String result = new String();
+        String result = "";
 
         try{
             InputStream is = context.getAssets().open("quotes.json");

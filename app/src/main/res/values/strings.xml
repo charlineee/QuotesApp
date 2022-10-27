@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">QuotesApp</string>
+    <string name="app_name">Star Wars Quote App</string>
+    <string name="background_image">Tatooine showing the twin suns in the background</string>
+    <string name="quotewars">quotewars</string>
 </resources>

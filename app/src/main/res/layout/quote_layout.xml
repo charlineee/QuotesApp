@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="366dp"
+        android:layout_height="375dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
         android:layout_marginStart="28dp"
         android:layout_marginEnd="28dp"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center">
+        app:cardBackgroundColor="#66D8D8D8"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -20,27 +23,33 @@
 
             <TextView
                 android:id="@+id/quote"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginTop="52dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="58dp"
+                android:layout_marginEnd="32dp"
+                android:fontFamily="@font/futura_med_bold"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/author"
-                android:layout_width="193dp"
+                android:layout_width="300dp"
                 android:layout_height="86dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
+                android:layout_marginBottom="-4dp"
+                android:fontFamily="@font/univers"
+                android:textColor="@color/black"
                 android:textDirection="rtl"
-                android:textSize="22sp" />
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+                android:textSize="28sp" />
 
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

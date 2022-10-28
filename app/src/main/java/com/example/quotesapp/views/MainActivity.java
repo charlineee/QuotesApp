@@ -13,18 +13,19 @@ import androidx.recyclerview.widget.SnapHelper;
 import com.example.quotesapp.R;
 import com.example.quotesapp.adapters.QuoteAdapter;
 import com.example.quotesapp.models.Quotes;
-import com.example.quotesapp.utils.DataUtil;
+import com.example.quotesapp.utils.JsonFileReader;
 import com.example.quotesapp.viewmodels.QuoteViewModel;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    DataUtil data = new DataUtil();
+    JsonFileReader dataReader = new JsonFileReader();
     String jsonString = null;
     QuoteViewModel viewModel;
     QuoteAdapter adapter;
     RecyclerView recyclerView;
+    ArrayList<Quotes> quoteArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
 
         //pull JSON data as string
-        jsonString = data.loadFile(this);
+        jsonString = dataReader.loadFile(this);
         viewModel = new ViewModelProvider(this).get(QuoteViewModel.class);
-
+        adapter = new QuoteAdapter(quoteArrayList, this);
+        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         //on scroll, snap to position
@@ -53,10 +55,12 @@ public class MainActivity extends AppCompatActivity {
         if (jsonString != null){
             viewModel.convertFile(jsonString);
         }
+
+        //observe data
         viewModel.convertedData.observe(this, quotes -> {
             if (quotes != null) {
-                adapter = new QuoteAdapter(quotes, this);
-                recyclerView.setAdapter(adapter);
+                quoteArrayList.addAll(quotes);
+                adapter.notifyItemRangeChanged(0, quotes.size());
 
                 for (Quotes quote : quotes) {
                     speeds.add(quote.getSlideTransitionDelay());

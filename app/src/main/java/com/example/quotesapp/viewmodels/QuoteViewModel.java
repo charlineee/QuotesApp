@@ -13,7 +13,8 @@ public class QuoteViewModel extends ViewModel {
     public MutableLiveData<ArrayList<Quotes>> convertedData = new MutableLiveData<>();
 
     public void convertFile(String pulledJson){
-        ArrayList<Quotes> quoteList = new Gson().fromJson(pulledJson, new TypeToken<ArrayList<Quotes>>() {}.getType());
+        ArrayList<Quotes> quoteList = new Gson().fromJson(pulledJson,
+                new TypeToken<ArrayList<Quotes>>() {}.getType());
         convertedData.setValue(quoteList);
     }
 }

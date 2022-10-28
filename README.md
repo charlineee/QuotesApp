@@ -1,4 +1,5 @@
-#Star Wars Quote App
+# Star Wars Quote App
+
 This app displays a list of quotes. The data comes from a JSON file stored in assets.
 
 A class, JsonFileReader parses the asset file and returns a string. This string is then
